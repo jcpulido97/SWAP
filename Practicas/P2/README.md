@@ -21,14 +21,14 @@ Hay que llevar a cabo las siguientes tareas:
 
 ## Pasos
 
-  - Comprimir "/var/www/html" y copiar a través de ssh y piping con cat:
+### Comprimir "/var/www/html" y copiar a través de ssh y piping con cat:
   ```
     tar czf - /var/www/html | ssh 192.168.56.X 'cat > ~/tar.tgz'
   ```
  <img src="./imagenes/tar.PNG" width="600">
 
 ------
-  - Utilizar rsync para clonar contenido entre máquinas:
+### Utilizar rsync para clonar contenido entre máquinas:
   ```
     sudo apt-get install rsync
     #Primero cambiar el propietario de la carpeta www para poder utilizar rsync
@@ -38,7 +38,7 @@ Hay que llevar a cabo las siguientes tareas:
  <img src="./imagenes/produccion.PNG" width="600">
 
 ------
-  - Configuración de ssh para acceder sin que solicite contraseña:
+### Configuración de ssh para acceder sin que solicite contraseña:
   ```
     ssh-keygen -b 4096 -t rsa
     chmod 600 ~/.ssh/authorized_keys
