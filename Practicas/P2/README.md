@@ -32,5 +32,5 @@ Hay que llevar a cabo las siguientes tareas:
     #Primero cambiar el propietario de la carpeta www para poder utilizar rsync
     sudo chown jcpulido97:jcpulido97 –R /var/www
     rsync -avz -e ssh 192.168.56.X:/var/www/ /var/www/ 
-    [tar]:(images/produccion.png)
   ```
+    [tar]:(images/produccion.png)
