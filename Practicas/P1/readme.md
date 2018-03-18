@@ -68,6 +68,7 @@ Acceder desde la máquina anfitrión a una máquina
 ```
     curl 192.168.56.X/hola.html
 ```    
+Obtendremos como salida:
 ```
   <HTML>
   <BODY>
