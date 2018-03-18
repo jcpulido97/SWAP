@@ -52,6 +52,7 @@ Hay que llevar a cabo las siguientes tareas:
 ### Establecer una tarea en cron que se ejecute cada hora para mantener actualizado el contenido del directorio /var/www entre las dos máquinas.
   ```
     sudo nano /etc/crontab
+    #Añadimos esta linea al final del archivo
     01 *  * * * jcpulido97 rsync -avz -e ssh 192.168.56.6:/var/www/ /var/www/
   ```
  <img src="./imagenes/crontab.PNG" width="600">
