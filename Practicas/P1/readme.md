@@ -28,7 +28,7 @@ Debemos configurar una nueva interfaz de red (HostOnly) para poder comunicar amb
 
 2. Reiniciamos la red para aplicar los cambios:
 ```
-    etc/init.d/networking restart 
+    sudo /etc/init.d/networking restart 
 ```
 
 3. Probamos la conexión:
@@ -44,17 +44,17 @@ Para poder conectarnos a las máquinas vistuales vamos a realizarlo con ssh.
     ssh jcpulido97@192.168.56.X
 ```    
 
-![Captura de ssh1](./imagenes/CapturaSSH2.PNG)
-
 Acceder desde la máquina anfitrión a una máquina  
 
 ```
     ssh jcpulido97@192.168.56.Y
 ```    
 
-![Captura de ssh2](./imagenes/CapturaSSH1.PNG)
+- - -
 
-2. Creamos un html para probar la conexión al servidor http en "/var/www/html/hola.html"
+## Configuración del html
+
+1. Creamos un html para probar la conexión al servidor http en "/var/www/html/hola.html"
 ```
   <HTML>
   <BODY>
@@ -63,15 +63,15 @@ Acceder desde la máquina anfitrión a una máquina
   </HTML>
 ```
 
-3. Acceder mediante la herramienta curl desde una máquina a la otra   
+2. Acceder mediante la herramienta curl desde una máquina a la otra   
 
 ```
     curl 192.168.56.X/hola.html
-    
-    Salida: 
-      <HTML>
-      <BODY>
-        Esto funciona  :)
-      </BODY>
-      </HTML>
 ```    
+```
+  <HTML>
+  <BODY>
+    Esto funciona  :)
+  </BODY>
+  </HTML>
+```
