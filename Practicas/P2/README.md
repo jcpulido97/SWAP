@@ -33,4 +33,4 @@ Hay que llevar a cabo las siguientes tareas:
     sudo chown jcpulido97:jcpulido97 –R /var/www
     rsync -avz -e ssh 192.168.56.X:/var/www/ /var/www/ 
   ```
-    [tar]:(images/produccion.png)
+    [tar]:(./imagenes/produccion.png)
