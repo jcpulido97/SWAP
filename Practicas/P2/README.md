@@ -37,7 +37,10 @@ Hay que llevar a cabo las siguientes tareas:
  
   - Configuración de ssh para acceder sin que solicite contraseña:
   ```
+    ssh-keygen -b 4096 -t rsa
+    chmod 600 ~/.ssh/authorized_keys
+    ssh-copy -id 192.168.56.X
   ```
-  
+  A continuación ya podremos conectarnosa dicho equipo sin contraseña  
  <img src="./imagenes/ssh_comando.PNG" width="600">
  <img src="./imagenes/ssh_key.PNG" width="600">
