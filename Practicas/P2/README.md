@@ -34,3 +34,10 @@ Hay que llevar a cabo las siguientes tareas:
     rsync -avz -e ssh 192.168.56.X:/var/www/ /var/www/ 
   ```
  <img src="./imagenes/produccion.PNG" width="600">
+ 
+  - Configuración de ssh para acceder sin que solicite contraseña:
+  ```
+  ```
+  
+ <img src="./imagenes/ssh_comando.PNG" width="600">
+ <img src="./imagenes/ssh_key.PNG" width="600">
