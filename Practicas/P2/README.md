@@ -21,7 +21,16 @@ Hay que llevar a cabo las siguientes tareas:
 
 ## Pasos
 
-Comprimir "/var/www/html" y copiar a través de ssh y piping con cat:
-```
-tar czf - /var/www/html | ssh 192.168.56.X 'cat > ~/tar.tgz'
-```
+  - Comprimir "/var/www/html" y copiar a través de ssh y piping con cat:
+  ```
+    tar czf - /var/www/html | ssh 192.168.56.X 'cat > ~/tar.tgz'
+  ```
+
+  - Utilizar rsync para clonar contenido entre máquinas:
+  ```
+    sudo apt-get install rsync
+    #Primero cambiar el propietario de la carpeta www para poder utilizar rsync
+    sudo chown jcpulido97:jcpulido97 –R /var/www
+    rsync -avz -e ssh 192.168.56.X:/var/www/ /var/www/ 
+    [tar]:(images/produccion.png)
+  ```
