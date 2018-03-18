@@ -21,7 +21,7 @@ Hay que llevar a cabo las siguientes tareas:
 
 ## Pasos
 
-### Comprimir "/var/www/html" y copiar a través de ssh y piping con cat:
+### Comprimir "/var/www/html" y copiar a través de ssh y ping con cat:
   ```
     tar czf - /var/www/html | ssh 192.168.56.X 'cat > ~/tar.tgz'
   ```
