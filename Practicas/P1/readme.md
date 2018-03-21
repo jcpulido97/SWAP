@@ -15,6 +15,8 @@ El resultado de ejecutar estas tareas se debe documentar usando un archivo de te
 
 ## Configuración
 
+Todo lo que hagamos de ahora en adelante deberemos de replicarlo para la 2ª máquina que tenemos, cambiando la IP para evitar conflictos
+
 Debemos configurar una nueva interfaz de red (HostOnly) para poder comunicar ambas máquina entre sí, estableciendo una ip estática a cada una de ellas. Para configurarlo:
 
 1. Modificar el archivo  `/etc/network/interfaces`
