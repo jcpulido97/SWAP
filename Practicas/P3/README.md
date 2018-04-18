@@ -38,4 +38,32 @@ Primero empezaremos por la instalación del balanceador Nginx
   sudo systemctl start nginx
 ```
 
-Ahora deberemos de editar el archivo de configuración **"/etc/nginx/conf.d/default.conf"**
+Ahora deberemos de editar el archivo de configuración **/etc/nginx/conf.d/default.conf**
+Para añadir las siguientes líneas:
+
+```
+upstream apaches {
+  server 172.16.168.130;
+  server 172.16.168.131;
+}
+server{
+  listen 80;
+  server_name balanceador;
+  access_log /var/log/nginx/balanceador.access.log;
+  error_log /var/log/nginx/balanceador.error.log;
+  root /var/www/;
+  location /
+  {
+    proxy_pass http://apaches;
+    proxy_set_header Host $host;
+    proxy_set_header X-Real-IP $remote_addr;
+    proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+    proxy_http_version 1.1;
+    proxy_set_header Connection "";
+  }
+}
+```
+Guardamos los cambios e iniciamos el servidor web.
+```
+sudo systemctl start nginx
+```
