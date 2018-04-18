@@ -124,3 +124,7 @@ Nginx:
 
 Haproxy:
 ![alt text](https://github.com/jcpulido97/SWAP/blob/master/Practicas/P3/img/Haproxy.PNG)
+
+
+Como podemos ver el uso de CPU de las máquinas se ve bastante incrementado debido al test, y tambíen se 
+ve que como el balanceador reparte la carga entre las máquinas servidoras
