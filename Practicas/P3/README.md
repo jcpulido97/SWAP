@@ -43,15 +43,19 @@ Para añadir las siguientes líneas:
 
 ```
 upstream apaches {
-  server 172.16.168.130;
-  server 172.16.168.131;
+  server 192.168.56.5;  #IP de Máquina 1
+  server 192.168.56.6;  #IP de Máquina 2
 }
+
 server{
   listen 80;
   server_name balanceador;
+  
   access_log /var/log/nginx/balanceador.access.log;
   error_log /var/log/nginx/balanceador.error.log;
+  
   root /var/www/;
+  
   location /
   {
     proxy_pass http://apaches;
@@ -62,6 +66,7 @@ server{
     proxy_set_header Connection "";
   }
 }
+
 ```
 Guardamos los cambios e iniciamos el servidor web.
 ```
