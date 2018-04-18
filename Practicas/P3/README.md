@@ -30,6 +30,8 @@ Nuestro objetivo es terminar con una granja web de este estilo
 
 ![alt text](https://github.com/jcpulido97/SWAP/blob/master/Practicas/P3/img/diagrama.png)
 
+### Nginx
+
 Primero empezaremos por la instalación del balanceador Nginx
 
 ```bash
@@ -74,3 +76,52 @@ sudo systemctl start nginx
 Con esto ya deberíamos de conseguir que nuestra máquina balancee entre ambos servidores finales
 
 ![alt text](https://github.com/jcpulido97/SWAP/blob/master/Practicas/P3/img/balanceador_ssl.gif)
+
+### Haproxy
+
+Lo primero es instalar el balanceador haproxy:
+```bash
+  sudo apt-get install haproxy
+```
+Ahora deberemos de modificar el archivo **/etc/haproxy/haproxy.cfg** 
+```
+global
+  daemon
+  maxconn 256
+  
+defaults
+  mode http
+  contimeout 4000
+  clitimeout 42000
+  srvtimeout 43000
+  
+frontend http-in
+  bind *:80
+  default_backend servers
+  
+backend servers
+  server m1 192.168.56.5:80 maxconn 32
+  server m2 192.168.56.6:80 maxconn 32
+```
+Una vez guardada la configuración debemos de iniciar el servicio de haproxy
+```
+sudo /usr/sbin/haproxy -f /etc/haproxy/haproxy.cfg
+```
+Una vez más deberíamos obtener el mismo resultado que con nginx, solo con haproxy balanceando entre los servidores
+
+![alt text](https://github.com/jcpulido97/SWAP/blob/master/Practicas/P3/img/balanceador_ssl.gif)
+
+### Apache Benchmark
+
+Por último vamos a someter a un benchmark nuestra "granja web" para ver como se comporta frente a una elevada carga.
+
+Lanzamos una prueba contra el balanceador
+```
+ab -n 1000 -c 10 http://192.168.56.11/index.html
+
+Nginx:
+![alt text](https://github.com/jcpulido97/SWAP/blob/master/Practicas/P3/img/Captura.PNG)
+
+Haproxy:
+![alt text](https://github.com/jcpulido97/SWAP/blob/master/Practicas/P3/img/Haproxy.PNG)
+```
