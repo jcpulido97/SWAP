@@ -118,10 +118,9 @@ Por último vamos a someter a un benchmark nuestra "granja web" para ver como se
 Lanzamos una prueba contra el balanceador
 ```
 ab -n 1000 -c 10 http://192.168.56.11/index.html
-
+```
 Nginx:
 ![alt text](https://github.com/jcpulido97/SWAP/blob/master/Practicas/P3/img/Captura.PNG)
 
 Haproxy:
 ![alt text](https://github.com/jcpulido97/SWAP/blob/master/Practicas/P3/img/Haproxy.PNG)
-```
