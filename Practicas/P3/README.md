@@ -28,4 +28,4 @@ hacer varias peticiones son diferentes (eso indicará que el balanceador deriva 
 
 Nuestro objetivo es terminar con una granja web de este estilo
 
-![alt text][diagrama.png]
+![alt text](https://github.com/jcpulido97/SWAP/blob/master/Practicas/P3/img/diagrama.png)
