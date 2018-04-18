@@ -30,9 +30,12 @@ Nuestro objetivo es terminar con una granja web de este estilo
 
 ![alt text](https://github.com/jcpulido97/SWAP/blob/master/Practicas/P3/img/diagrama.png)
 
-Primero empezaremos por el balanceador Nginx
+Primero empezaremos por la instalación del balanceador Nginx
+
 ```bash
   sudo apt-get update && sudo apt-get dist-upgrade && sudo apt-get autoremove
   sudo apt-get install nginx
   sudo systemctl start nginx
 ```
+
+Ahora deberemos de editar el archivo de configuración **"/etc/nginx/conf.d/default.conf"**
