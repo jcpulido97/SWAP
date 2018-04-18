@@ -66,9 +66,9 @@ server{
     proxy_set_header Connection "";
   }
 }
-
 ```
 Guardamos los cambios e iniciamos el servidor web.
 ```
 sudo systemctl start nginx
 ```
+Con esto ya deberíamos de conseguir que nuestra máquina balancee entre ambos servidores finales
