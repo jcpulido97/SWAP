@@ -128,3 +128,13 @@ Haproxy:
 
 Como podemos ver el uso de CPU de las máquinas se ve bastante incrementado debido al test, y tambíen se 
 ve que como el balanceador reparte la carga entre las máquinas servidoras
+
+## Conclusiones
+
+Gracias a esta configuración nuestro sistema verá incrementar su porcentaje de disponibiliad
+gratamente debido a que la probabilidad de que todas las máquinas servidoras finales fallen
+es minúscula.
+
+También haremos que nuestras máquinas sean más duraderas ya que su estres
+decrementará consiguiendo así gran nivel de escalabilidad horizontal a la hora de servir
+peticiones
