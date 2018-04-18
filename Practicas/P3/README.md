@@ -72,3 +72,5 @@ Guardamos los cambios e iniciamos el servidor web.
 sudo systemctl start nginx
 ```
 Con esto ya deberíamos de conseguir que nuestra máquina balancee entre ambos servidores finales
+
+![alt text](https://github.com/jcpulido97/SWAP/blob/master/Practicas/P3/img/balanceador_ssl.gif)
