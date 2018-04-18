@@ -25,3 +25,7 @@ En las tareas  1  y  2 debemos hacer  peticiones  a  la  dirección  IP del  bal
 hacer varias peticiones son diferentes (eso indicará que el balanceador deriva tráfico a las máquinas servidoras finales).
 
 ## Resolución
+
+Nuestro objetivo es terminar con una granja web de este estilo
+
+![alt text][diagrama.png]
