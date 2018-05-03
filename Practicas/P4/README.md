@@ -59,6 +59,10 @@ y también activando las distintas opciones que vemos para decir donde se encuen
 
 ![alt text](https://github.com/jcpulido97/SWAP/blob/master/Practicas/P4/img/nginx_ssl.PNG)
 
+Ya tendremos nues
+
+![alt text](https://github.com/jcpulido97/SWAP/blob/master/Practicas/P4/img/balanceador_ssl.gif)
+
 ## 2) Configurar las reglas del cortafuegos para proteger la granja web.
 
 En mi caso vamos a utilizar una 4ª máquina que hará de servidor de entrada de cara a Internet, de esta forma
@@ -128,3 +132,5 @@ Debemos de cambiar el valor de la variable "net.ipv4.ip_forward=1" en el archivo
   net.ipv4.ip_forward = 1
   service network restart
 ```
+
+![alt text](https://github.com/jcpulido97/SWAP/blob/master/Practicas/P4/img/nat.gif)
