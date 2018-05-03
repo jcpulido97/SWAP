@@ -16,7 +16,7 @@ clientes pudieran acceder sin ningún aviso de que el certificado no es de fiar.
 En este caso utilizaremos un certificado autofirmado para ahorrarnos ciertos pasos en la instalacion
 pero en un caso de producción esto sería algo inaceptable.
 
-![alt text](https://github.com/jcpulido97/SWAP/blob/master/Practicas/P4/img/graja.png)
+![alt text](https://github.com/jcpulido97/SWAP/blob/master/Practicas/P4/img/granja.PNG)
 
 **Ahora deberemos elegir entre la opción a) o b) según nuestra topología**
 
@@ -51,4 +51,4 @@ máquina dedicada a balancear de esta forma solo habrá que realizar la configur
   sudo openssl req -x509 -nodes -days 365 -newkey rsa:2048 -keyout /etc/nginx/ssl/nginx.key -out /etc/nginx/ssl/nginx.crt
 ```
 b.1) Modificar el archivo de sites-enabled/default.conf en la carpeta de instalación de nginx
-![alt text](https://github.com/jcpulido97/SWAP/blob/master/Practicas/P4/img/nginx_ssl.png)
+![alt text](https://github.com/jcpulido97/SWAP/blob/master/Practicas/P4/img/nginx_ssl.PNG)
