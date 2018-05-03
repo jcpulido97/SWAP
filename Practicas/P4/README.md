@@ -117,9 +117,14 @@ Ahora vamos a crear un script que configure las reglas de nuestro sistema de for
   # Confgiguración para usar firewall como nat para reenrutar los paquetes que lleguen a los puertos 80 o 443
   iptables -P FORWARD ACCEPT
   iptables -t nat -A PREROUTING -i enp0s8 -p tcp --dport 80 -j DNAT --to-destination 192.168.56.11
-  iptables -t nat -A PREROUTING -i enp0s8 -p tcp --dport 80 -j DNAT --to-destination 192.168.56.11
-  iptables -t nat -A PREROUTING -i enp0s8 -p tcp --dport 80 -j DNAT --to-destination 192.168.56.11
+  iptables -t nat -A PREROUTING -i enp0s8 -p tcp --dport 443 -j DNAT --to-destination 192.168.56.11
   iptables -t nat -A POSTROUTING -o enp0s8 -p tcp --dport 80 -d 192.168.56.11 -j SNAT --to-source 192.168.56.15
   iptables -t nat -A POSTROUTING -o enp0s8 -p tcp --dport 443 -d 192.168.56.11 -j SNAT --to-source 192.168.56.15
-  iptables -t nat -A PREROUTING -i enp0s8 -p tcp --dport 443 -j DNAT --to-destination 192.168.56.11
+```
+
+Debemos de cambiar el valor de la variable "net.ipv4.ip_forward=1" en el archivo __'/etc/sysctl.conf'__
+```
+  sudo nano /etc/sysctl.conf
+  net.ipv4.ip_forward = 1
+  service network restart
 ```
