@@ -115,9 +115,9 @@ Ahora vamos a crear un script que configure las reglas de nuestro sistema de for
   iptables -A OUTPUT -o eth0 -p tcp -m multiport --sports 22,80,443 -m state --state ESTABLISHED -j ACCEPT
 
   # Confgiguración para usar firewall como nat para reenrutar los paquetes que lleguen a los puertos 80 o 443
-  iptables -t nat -A PREROUTING -i enp0s8 -p tcp --dport 80 -j DNAT --to-destination 192.168.56.11
-  iptables -t nat -A PREROUTING -i enp0s8 -p tcp --dport 80 -j DNAT --to-destination 192.168.56.11
   iptables -P FORWARD ACCEPT
+  iptables -t nat -A PREROUTING -i enp0s8 -p tcp --dport 80 -j DNAT --to-destination 192.168.56.11
+  iptables -t nat -A PREROUTING -i enp0s8 -p tcp --dport 80 -j DNAT --to-destination 192.168.56.11
   iptables -t nat -A PREROUTING -i enp0s8 -p tcp --dport 80 -j DNAT --to-destination 192.168.56.11
   iptables -t nat -A POSTROUTING -o enp0s8 -p tcp --dport 80 -d 192.168.56.11 -j SNAT --to-source 192.168.56.15
   iptables -t nat -A POSTROUTING -o enp0s8 -p tcp --dport 443 -d 192.168.56.11 -j SNAT --to-source 192.168.56.15
