@@ -59,7 +59,7 @@ y también activando las distintas opciones que vemos para decir donde se encuen
 
 ![alt text](https://github.com/jcpulido97/SWAP/blob/master/Practicas/P4/img/nginx_ssl.PNG)
 
-Ya tendremos nues
+Ya tendremos nuestra granja web conectado mediante comunicaciones encriptadas (Nginx ip = 192.168.56.11)
 
 ![alt text](https://github.com/jcpulido97/SWAP/blob/master/Practicas/P4/img/balanceador_ssl.gif)
 
@@ -125,6 +125,7 @@ Ahora vamos a crear un script que configure las reglas de nuestro sistema de for
   iptables -t nat -A POSTROUTING -o enp0s8 -p tcp --dport 80 -d 192.168.56.11 -j SNAT --to-source 192.168.56.15
   iptables -t nat -A POSTROUTING -o enp0s8 -p tcp --dport 443 -d 192.168.56.11 -j SNAT --to-source 192.168.56.15
 ```
+![alt text](https://github.com/jcpulido97/SWAP/blob/master/Practicas/P4/img/iptables.PNG)
 
 Debemos de cambiar el valor de la variable "net.ipv4.ip_forward=1" en el archivo __'/etc/sysctl.conf'__
 ```
@@ -132,5 +133,9 @@ Debemos de cambiar el valor de la variable "net.ipv4.ip_forward=1" en el archivo
   net.ipv4.ip_forward = 1
   service network restart
 ```
+
+Ya tendremos nuestra granja web conectado mediante comunicaciones encriptadas a través de nuestro firewall (Firewall ip = 192.168.56.15)
+
+![alt text](https://github.com/jcpulido97/SWAP/blob/master/Practicas/P4/img/nat_ip.PNG)
 
 ![alt text](https://github.com/jcpulido97/SWAP/blob/master/Practicas/P4/img/nat.gif)
