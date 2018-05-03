@@ -16,23 +16,39 @@ clientes pudieran acceder sin ningún aviso de que el certificado no es de fiar.
 En este caso utilizaremos un certificado autofirmado para ahorrarnos ciertos pasos en la instalacion
 pero en un caso de producción esto sería algo inaceptable.
 
-a) En nuestro caso podemos instalarlo en cada una de las máquinas servidoras finales:
+![alt text](https://github.com/jcpulido97/SWAP/blob/master/Practicas/P4/img/graja.png)
 
+**Ahora deberemos elegir entre la opción a) o b) según nuestra topología**
+
+### a) Instalación del certificado en cada servidor
+a) En nuestro caso podemos instalarlo en cada una de las máquinas servidoras finales:
 ```
   a2enmod ssl
   service apache2 restart 
-  mkdir /etc/apache2/ssl 
-  openssl req -x509 -nodes -days 365 -newkey rsa:2048 -keyout /etc/apache2/ssl/apache.key -out /etc/apache2/ssl/apache.crt
+  sudo mkdir /etc/apache2/ssl 
+  sudo openssl req -x509 -nodes -days 365 -newkey rsa:2048 -keyout /etc/apache2/ssl/apache.key -out /etc/apache2/ssl/apache.crt
 ```
 a.1) Modificar los archivos de configuración de apache
 ```
   nano /etc/apache2/sites-available/default-ssl
-  #Añadir las siguientes lineas  
+```
+a.2) Añadir las siguientes lineas donde pone SSLEngine on:
+```
+  SSLCertificateFile /etc/apache2/ssl/apache.crt 
+  SSLCertificateKeyFile /etc/apache2/ssl/apache.key
+```
+a.3) Sólo queda activar defaul--ssl y reiniciar el servicio y nuestro servidor ya estaría listo para servir HTTPS:
+```
+  a2ensite default-ssl
+  service apache2 reload
 ```
 
-O ahorrarnos bastante tiempo haciendo que la máquina encargada de cifrar la conexión sea la
+### b) Instalación del certificado en la máquina balanceadora
+b) También podemos ahorrarnos bastante tiempo haciendo que la máquina encargada de cifrar la conexión sea la
 máquina dedicada a balancear de esta forma solo habrá que realizar la configuración solo una vez
-
 ```
-  openssl req -x509 -nodes -days 365 -newkey rsa:2048 -keyout /etc/apache2/ssl/apache.key -out /etc/apache2/ssl/apache.crt
-  
+  sudo mkdir /etc/nginx/ssl
+  sudo openssl req -x509 -nodes -days 365 -newkey rsa:2048 -keyout /etc/nginx/ssl/nginx.key -out /etc/nginx/ssl/nginx.crt
+```
+b.1) Modificar el archivo de sites-enabled/default.conf en la carpeta de instalación de nginx
+![alt text](https://github.com/jcpulido97/SWAP/blob/master/Practicas/P4/img/nginx_ssl.png)
