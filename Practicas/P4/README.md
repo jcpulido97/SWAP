@@ -21,6 +21,7 @@ pero en un caso de producción esto sería algo inaceptable.
 **Ahora deberemos elegir entre la opción a) o b) según nuestra topología**
 
 ### a) Instalación del certificado en cada servidor
+
 a) En nuestro caso podemos instalarlo en cada una de las máquinas servidoras finales:
 ```
   a2enmod ssl
@@ -44,6 +45,7 @@ a.3) Sólo queda activar defaul--ssl y reiniciar el servicio y nuestro servidor 
 ```
 
 ### b) Instalación del certificado en la máquina balanceadora
+
 b) También podemos ahorrarnos bastante tiempo haciendo que la máquina encargada de cifrar la conexión sea la
 máquina dedicada a balancear de esta forma solo habrá que realizar la configuración solo una vez
 ```
@@ -51,5 +53,8 @@ máquina dedicada a balancear de esta forma solo habrá que realizar la configur
   sudo openssl req -x509 -nodes -days 365 -newkey rsa:2048 -keyout /etc/nginx/ssl/nginx.key -out /etc/nginx/ssl/nginx.crt
 ```
 b.1) Modificar el archivo de sites-enabled/default.conf en la carpeta de instalación de nginx
+
+Añadiendo un server en el puerto 443 y activando los distintos parametros para realizar proxy como anteriormente
+y también activando las distintas opciones que vemos para decir donde se encuentran los certificados.
 
 ![alt text](https://github.com/jcpulido97/SWAP/blob/master/Practicas/P4/img/nginx_ssl.PNG)
