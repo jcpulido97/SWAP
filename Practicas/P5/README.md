@@ -111,3 +111,7 @@ mysql> SHOW SLAVE STATUS\G
 Por último añadiremos un registro en el maestro y este deberá aparecer tambien en el esclavo
 
 ![alt text](https://github.com/jcpulido97/SWAP/blob/master/Practicas/P5/img/dbsync.PNG)
+
+Como podemos ver todo se replica correctamente sin ninguna accion por parte nuestra.
+
+Y ya tendríamos nuestra base de datos replicada de forma automática
