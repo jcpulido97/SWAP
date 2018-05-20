@@ -67,10 +67,46 @@ Guardamos el documento y reiniciamos el servicio:
 /etc/init.d/mysql restart
 ```
 Creamos el usuario esclavo:
+
 ![alt text](https://github.com/jcpulido97/SWAP/blob/master/Practicas/P5/img/creacionUser.PNG)
 
 Mostramos los datos de master para saber el file que debemos de sincronizar mas adelante
+
 ![alt text](https://github.com/jcpulido97/SWAP/blob/master/Practicas/P5/img/masterStatus.PNG)
 
 En la máquina que actuará de esclavo introduciremos los siguientes comandos, para indicarle donde encontrar al servidor maestro y que base de datos de replicar
+
 ![alt text](https://github.com/jcpulido97/SWAP/blob/master/Practicas/P5/img/changemaster.PNG)
+
+
+```
+mysql> START SLAVE;
+```
+En la máquina de producción (Maestro)
+```
+mysql> UNLOCK TABLES;
+```
+
+Para comprobar que el esclavo funciona correctamente haremos un SHOW SLAVE STATUS\G y Seconds_Behind_Master deberá ser distinto de NULL
+```mysql> SHOW SLAVE STATUS\G
+*************************** 1. row ***************************
+               Slave_IO_State:
+                  Master_Host: 192.168.56.5
+                  Master_User: esclavo
+                  Master_Port: 3306
+                Connect_Retry: 60
+              Master_Log_File: mysql-bin.000002
+          Read_Master_Log_Pos: 1286
+               Relay_Log_File: ubuntu-relay-bin.000002
+                Relay_Log_Pos: 4
+        Relay_Master_Log_File: mysql-bin.000002
+...
+        Seconds_Behind_Master: 0
+...
+
+1 row in set (0,00 sec)
+```
+
+Por último añadiremos un registro en el maestro y este deberá aparecer tambien en el esclavo
+
+![alt text](https://github.com/jcpulido97/SWAP/blob/master/Practicas/P5/img/dbsync.PNG)
