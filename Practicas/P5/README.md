@@ -88,7 +88,8 @@ mysql> UNLOCK TABLES;
 ```
 
 Para comprobar que el esclavo funciona correctamente haremos un SHOW SLAVE STATUS\G y Seconds_Behind_Master deberá ser distinto de NULL
-```mysql> SHOW SLAVE STATUS\G
+```
+mysql> SHOW SLAVE STATUS\G
 *************************** 1. row ***************************
                Slave_IO_State:
                   Master_Host: 192.168.56.5
