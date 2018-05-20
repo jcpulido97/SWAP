@@ -54,3 +54,23 @@ Ya tendríamos nuestro servidor con la copia de las tablas
 ### Configurar  la  estructura  maestro esclavo
 
 La forma de hacer copias manualmente es buena pero consume tiempo y no es instantánea, sin embargo si configuramos un servidor de forma que sea el maestro y el de backup esclavo, cada vez que un dato se insertase en el maestro este lo transmitiría a todos sus esclavos de forma que las tablas estarían replicadas de forma casi instantánea
+
+Debemos de cambiar la configuracion "/etc/mysql/my.cnf" que también puede ser "/etc/mysql/mysql.conf.d/mysqld.cnf" dependiendo de la version de mysql
+```
+Comentamos el parámetro bind-address que sirve para que escuche a un servidor:
+#bind-address 127.0.0.1
+
+Establecemos el identificador del servidor.
+server-id = 1
+
+Guardamos el documento y reiniciamos el servicio:
+/etc/init.d/mysql restart
+```
+Creamos el usuario esclavo:
+![alt text](https://github.com/jcpulido97/SWAP/blob/master/Practicas/P5/img/creacionUser.PNG)
+
+Mostramos los datos de master para saber el file que debemos de sincronizar mas adelante
+![alt text](https://github.com/jcpulido97/SWAP/blob/master/Practicas/P5/img/masterStatus.PNG)
+
+En la máquina que actuará de esclavo introduciremos los siguientes comandos, para indicarle donde encontrar al servidor maestro y que base de datos de replicar
+![alt text](https://github.com/jcpulido97/SWAP/blob/master/Practicas/P5/img/changemaster.PNG)
